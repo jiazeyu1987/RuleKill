@@ -1,22 +1,10 @@
 .rule-paper {
     background: #f5f5dc;
     border: 1px solid #d2b48c;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    transition: all 0.3s ease;
-    animation: fadeIn 0.5s ease-in;
-}
-
-.rule-paper:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .rule-paper::before {
@@ -33,15 +21,10 @@
 .rule-title {
     font-weight: bold;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #8b4513;
     position: relative;
     z-index: 1;
-    font-size: 18px;
-    padding: 8px;
-    background: rgba(139, 69, 19, 0.1);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .rule-item {
@@ -51,6 +34,29 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.rule-marking-inline {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.mark-button-inline {
+    background: #d2b48c;
+    color: #8b4513;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+}
+
+.mark-button-inline:hover {
+    background: #e6d2b5;
 }
 
 @media (max-width: 480px) {

@@ -3,7 +3,11 @@ const gameState = {
     time: 22, // 22:00 (10 PM)
     hunger: 80,
     energy: 70,
-    sanity: 60
+    sanity: 60,
+    intelligence: 50,
+    strength: 50,
+    speed: 50,
+    luck: 50
 };
 
 // Game passages data
@@ -11,61 +15,61 @@ const passages = {
     start: {
         text: "欢迎来到寝室规则怪谈！你是一个刚入学的新生，现在是晚上10点，你独自在寝室里。墙上贴着一些奇怪的规则纸条，你需要小心遵守它们。",
         choices: [
-            { text: "仔细查看规则纸条", action: "checkRules", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: -10 },
-            { text: "准备睡觉", action: "goToBed", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: 5 },
-            { text: "离开寝室去图书馆", action: "leaveRoom", timeChange: 1, hungerChange: -5, energyChange: -15, sanityChange: -20 }
+            { text: "仔细查看规则纸条", action: "checkRules", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: -10, intelligenceChange: 5 },
+            { text: "准备睡觉", action: "goToBed", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: 5, strengthChange: 5 },
+            { text: "离开寝室去图书馆", action: "leaveRoom", timeChange: 1, hungerChange: -5, energyChange: -15, sanityChange: -20, speedChange: -5 }
         ]
     },
     checkRules: {
         text: "你仔细查看了墙上的规则纸条，发现这些规则都很奇怪。有些规则看起来互相矛盾，有些规则似乎在暗示着什么可怕的事情。",
         choices: [
-            { text: "研究规则之间的矛盾", action: "analyzeContradictions", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: -15 },
-            { text: "尝试验证某条规则", action: "testRule", timeChange: 1, hungerChange: -5, energyChange: -15, sanityChange: -20 },
-            { text: "回到床铺", action: "goToBed", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: 10 }
+            { text: "研究规则之间的矛盾", action: "analyzeContradictions", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: -15, intelligenceChange: 10 },
+            { text: "尝试验证某条规则", action: "testRule", timeChange: 1, hungerChange: -5, energyChange: -15, sanityChange: -20, luckChange: -10 },
+            { text: "回到床铺", action: "goToBed", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: 10, strengthChange: 5 }
         ]
     },
     goToBed: {
         text: "你爬上了床铺，准备睡觉。但是你注意到寝室里似乎有些不对劲...墙上的一些规则纸条在黑暗中似乎在发光。",
         choices: [
-            { text: "开灯仔细查看", action: "turnOnLight", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: -10 },
-            { text: "蒙头睡觉", action: "sleep", timeChange: 2, hungerChange: 0, energyChange: 10, sanityChange: -5 },
-            { text: "起床继续研究规则", action: "checkRules", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: -15 }
+            { text: "开灯仔细查看", action: "turnOnLight", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: -10, intelligenceChange: 5 },
+            { text: "蒙头睡觉", action: "sleep", timeChange: 2, hungerChange: 0, energyChange: 10, sanityChange: -5, strengthChange: 10 },
+            { text: "起床继续研究规则", action: "checkRules", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: -15, intelligenceChange: 5 }
         ]
     },
     leaveRoom: {
         text: "你决定离开寝室去图书馆。当你打开门时，你注意到走廊里异常安静，而且走廊的灯似乎比平时暗淡。",
         choices: [
-            { text: "前往图书馆", action: "library", timeChange: 1, hungerChange: -10, energyChange: -20, sanityChange: -30 },
-            { text: "返回寝室", action: "start", timeChange: 0.5, hungerChange: 0, energyChange: -5, sanityChange: 15 }
+            { text: "前往图书馆", action: "library", timeChange: 1, hungerChange: -10, energyChange: -20, sanityChange: -30, intelligenceChange: 10 },
+            { text: "返回寝室", action: "start", timeChange: 0.5, hungerChange: 0, energyChange: -5, sanityChange: 15, luckChange: 5 }
         ]
     },
     analyzeContradictions: {
         text: "你发现规则纸条之间确实存在矛盾。比如一张纸条说'不要在黑暗中数床铺数量'，而另一张却说'必须每天确认床铺数量'。这让你感到非常困惑和不安。",
         choices: [
-            { text: "尝试解决矛盾", action: "solveContradiction", timeChange: 1, hungerChange: -5, energyChange: -15, sanityChange: -25 },
-            { text: "忽略矛盾继续睡觉", action: "goToBed", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: 10 }
+            { text: "尝试解决矛盾", action: "solveContradiction", timeChange: 1, hungerChange: -5, energyChange: -15, sanityChange: -25, intelligenceChange: 15 },
+            { text: "忽略矛盾继续睡觉", action: "goToBed", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: 10, strengthChange: 5 }
         ]
     },
     testRule: {
         text: "你决定验证第一条规则：'晚上11点后不要照镜子'。现在是10:30，你拿起手电筒走向镜子。当你照镜子时，你发现镜子里的自己似乎在微笑，但你并没有笑。",
         choices: [
-            { text: "立即关灯", action: "turnOffLight", timeChange: 0.1, hungerChange: 0, energyChange: -10, sanityChange: -30 },
-            { text: "仔细观察镜子里的自己", action: "observeMirror", timeChange: 0.5, hungerChange: 0, energyChange: -15, sanityChange: -40 }
+            { text: "立即关灯", action: "turnOffLight", timeChange: 0.1, hungerChange: 0, energyChange: -10, sanityChange: -30, speedChange: 10 },
+            { text: "仔细观察镜子里的自己", action: "observeMirror", timeChange: 0.5, hungerChange: 0, energyChange: -15, sanityChange: -40, luckChange: -15 }
         ]
     },
     turnOnLight: {
         text: "你打开了灯，仔细查看墙上的规则纸条。在明亮的灯光下，你发现有些规则字迹似乎在慢慢变化，而且你确信刚才有些规则的内容和现在不一样了。你注意到墙角似乎还有一张被遮挡的纸条。",
         choices: [
-            { text: "记录变化的规则", action: "documentChanges", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: -20 },
-            { text: "查看墙角的纸条", action: "findRule2", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: -10 },
-            { text: "关灯假装什么都没发生", action: "goToBed", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: 15 }
+            { text: "记录变化的规则", action: "documentChanges", timeChange: 0.5, hungerChange: 0, energyChange: -10, sanityChange: -20, intelligenceChange: 10 },
+            { text: "查看墙角的纸条", action: "findRule2", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: -10, luckChange: 10 },
+            { text: "关灯假装什么都没发生", action: "goToBed", timeChange: 0.25, hungerChange: 0, energyChange: -5, sanityChange: 15, strengthChange: 5 }
         ]
     },
     findRule2: {
         text: "你走向墙角，移开了遮挡物，发现了一张新的规则纸条！上面写着：寝室规则二。",
         choices: [
-            { text: "查看规则内容", action: "checkRules", timeChange: 0.1, hungerChange: 0, energyChange: 0, sanityChange: -5 },
-            { text: "继续研究其他规则", action: "turnOnLight", timeChange: 0.1, hungerChange: 0, energyChange: 0, sanityChange: 5 }
+            { text: "查看规则内容", action: "checkRules", timeChange: 0.1, hungerChange: 0, energyChange: 0, sanityChange: -5, intelligenceChange: 5 },
+            { text: "继续研究其他规则", action: "turnOnLight", timeChange: 0.1, hungerChange: 0, energyChange: 0, sanityChange: 5, luckChange: 5 }
         ]
     },
     sleep: {
@@ -267,11 +271,11 @@ function updateRuleDisplay() {
             ruleDiv.innerHTML = `
                 <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
                     <span class="rule-text" style="color: ${ruleTextColor}">${rule.text}</span>
-                    <div class="rule-marking-inline">
-                        <button class="mark-button-inline" onclick="markRule(${rule.id}, 'true')" style="background-color: ${rule.marked === 'true' ? '#4CAF50' : '#d2b48c'}">真</button>
-                        <button class="mark-button-inline" onclick="markRule(${rule.id}, 'false')" style="background-color: ${rule.marked === 'false' ? '#f44336' : '#d2b48c'}">假</button>
-                        <button class="mark-button-inline" onclick="markRule(${rule.id}, 'unknown')" style="background-color: ${rule.marked === 'unknown' ? '#FF9800' : '#d2b48c'}">未知</button>
-                    </div>
+                </div>
+                <div class="rule-marking-inline">
+                    <button class="mark-button-inline" onclick="markRule(${rule.id}, 'true')" style="background-color: ${rule.marked === 'true' ? '#4CAF50' : '#d2b48c'}">真</button>
+                    <button class="mark-button-inline" onclick="markRule(${rule.id}, 'false')" style="background-color: ${rule.marked === 'false' ? '#f44336' : '#d2b48c'}">假</button>
+                    <button class="mark-button-inline" onclick="markRule(${rule.id}, 'unknown')" style="background-color: ${rule.marked === 'unknown' ? '#FF9800' : '#d2b48c'}">未知</button>
                 </div>
             `;
             
@@ -311,15 +315,23 @@ function updateStats() {
     document.getElementById('hunger-value').textContent = gameState.hunger;
     document.getElementById('energy-value').textContent = gameState.energy;
     document.getElementById('sanity-value').textContent = gameState.sanity;
+    document.getElementById('intelligence-value').textContent = gameState.intelligence;
+    document.getElementById('strength-value').textContent = gameState.strength;
+    document.getElementById('speed-value').textContent = gameState.speed;
+    document.getElementById('luck-value').textContent = gameState.luck;
     
     // Update progress bar widths
     document.querySelector('.hunger-fill').style.width = gameState.hunger + '%';
     document.querySelector('.energy-fill').style.width = gameState.energy + '%';
     document.querySelector('.sanity-fill').style.width = gameState.sanity + '%';
+    document.querySelector('.intelligence-fill').style.width = gameState.intelligence + '%';
+    document.querySelector('.strength-fill').style.width = gameState.strength + '%';
+    document.querySelector('.speed-fill').style.width = gameState.speed + '%';
+    document.querySelector('.luck-fill').style.width = gameState.luck + '%';
 }
 
 // Go to passage function
-function goToPassage(passageId, timeChange = 0, hungerChange = 0, energyChange = 0, sanityChange = 0) {
+function goToPassage(passageId, timeChange = 0, hungerChange = 0, energyChange = 0, sanityChange = 0, intelligenceChange = 0, strengthChange = 0, speedChange = 0, luckChange = 0) {
     // Special handling: find rule papers
     if (passageId === 'findRule2') {
         findRulePaper(2); // Find rule paper 2
@@ -341,6 +353,10 @@ function goToPassage(passageId, timeChange = 0, hungerChange = 0, energyChange =
     gameState.hunger = Math.max(0, Math.min(100, gameState.hunger + hungerChange));
     gameState.energy = Math.max(0, Math.min(100, gameState.energy + energyChange));
     gameState.sanity = Math.max(0, Math.min(100, gameState.sanity + sanityChange));
+    gameState.intelligence = Math.max(0, Math.min(100, gameState.intelligence + intelligenceChange));
+    gameState.strength = Math.max(0, Math.min(100, gameState.strength + strengthChange));
+    gameState.speed = Math.max(0, Math.min(100, gameState.speed + speedChange));
+    gameState.luck = Math.max(0, Math.min(100, gameState.luck + luckChange));
     
     const passage = passages[passageId];
     if (passage) {
@@ -358,7 +374,17 @@ function goToPassage(passageId, timeChange = 0, hungerChange = 0, energyChange =
             if (choice.actionFunction) {
                 button.onclick = choice.actionFunction;
             } else {
-                button.onclick = () => goToPassage(choice.action, choice.timeChange || 0, choice.hungerChange || 0, choice.energyChange || 0, choice.sanityChange || 0);
+                button.onclick = () => goToPassage(
+                    choice.action, 
+                    choice.timeChange || 0, 
+                    choice.hungerChange || 0, 
+                    choice.energyChange || 0, 
+                    choice.sanityChange || 0,
+                    choice.intelligenceChange || 0,
+                    choice.strengthChange || 0,
+                    choice.speedChange || 0,
+                    choice.luckChange || 0
+                );
             }
             choicesDiv.appendChild(button);
         });
