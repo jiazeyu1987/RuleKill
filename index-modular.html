@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寝室规则怪谈</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <h1>寝室规则怪谈</h1>
+    <div class="main-container">
+        <!-- Rules Panel Component -->
+        <div class="rules-container">
+            <!-- Rule Navigation Component -->
+            @@include('components/rule-navigation.html')
+            
+            <!-- Rule Paper Component -->
+            @@include('components/rule-paper.html')
+        </div>
+        
+        <!-- Game Area Component -->
+        <div class="game-area">
+            <div id="game-container">
+                <!-- Game Header Component -->
+                @@include('components/game-header.html')
+                
+                <!-- Passage Component -->
+                @@include('components/passage.html')
+                
+                <!-- Choices Component -->
+                @@include('components/choices.html')
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/game.js"></script>
+</body>
+</html>

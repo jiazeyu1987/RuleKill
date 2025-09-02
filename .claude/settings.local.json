@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.renpy.org)",
+      "Bash(mkdir:*)",
+      "Bash(curl:*)",
+      "Bash(unzip:*)",
+      "Bash(./renpy.exe:*)",
+      "WebFetch(domain:twinery.org)",
+      "WebFetch(domain:www.google.com)",
+      "Bash(cat:*)",
+      "Bash(npm install:*)",
+      "Bash(twine:*)",
+      "Bash(npx twine:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(start:*)",
+      "Bash(dir:*)",
+      "Bash(node build.js:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

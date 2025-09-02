@@ -1,0 +1,17 @@
+{
+  "name": "rules-kill-game",
+  "version": "1.0.0",
+  "description": "寝室规则怪谈 - A text-based horror game",
+  "main": "scripts/game.js",
+  "scripts": {
+    "build": "node build.js",
+    "start": "npm run build && npx serve dist",
+    "dev": "npx serve ."
+  },
+  "keywords": ["game", "text-adventure", "horror"],
+  "author": "Rules Kill Game Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
