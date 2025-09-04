@@ -116,7 +116,8 @@ h1 {
 
 @media (max-width: 480px) {
     .nav-button {
-        padding: 6px 10px;
+        width: 42px;
+        height: 32px;
         font-size: 12px;
     }
 }
@@ -165,16 +166,15 @@ h1 {
 
 .mark-button-inline {
     background: #d2b48c;
-    color: #8b4513;
+    color: white;
     border: none;
     border-radius: 3px;
-    padding: 4px 8px;
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
     text-align: center;
-    min-width: 40px;
-    height: 24px;
+    width: 42px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,6 +205,34 @@ h1 {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.time-profession-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.profession-display {
+    background: rgba(102, 126, 234, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    min-width: 60px;
+    text-align: center;
+}
+
+.profession-display:hover {
+    background: rgba(102, 126, 234, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
 .time-display {
     text-align: center;
     font-size: 1.1em;
@@ -213,7 +241,7 @@ h1 {
     background: rgba(0, 0, 0, 0.3);
     padding: 8px;
     border-radius: 8px;
-    margin-bottom: 12px;
+    min-width: 70px;
 }
 
 .stats-container {
@@ -298,6 +326,19 @@ h1 {
         padding: 6px;
         min-width: 65px;
     }
+    .time-profession-container {
+        gap: 10px;
+    }
+    .profession-display {
+        padding: 6px 10px;
+        font-size: 0.9em;
+        min-width: 50px;
+    }
+    .time-display {
+        font-size: 1em;
+        padding: 6px;
+        min-width: 60px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -308,9 +349,19 @@ h1 {
         padding: 5px;
         min-width: 55px;
     }
+    .time-profession-container {
+        gap: 8px;
+        flex-direction: column;
+    }
+    .profession-display {
+        padding: 5px 8px;
+        font-size: 0.85em;
+        min-width: 45px;
+    }
     .time-display {
         font-size: 1em;
         padding: 6px;
+        min-width: 55px;
     }
     .stat-value {
         font-size: 1em;
@@ -463,16 +514,17 @@ button:hover {
         <!-- Rules Panel Component -->
         <div class="rules-container">
             <!-- Rule Navigation Component -->
-            <div class="rule-navigation">
-    <button class="nav-button" onclick="prevRule()">↑ 上一张</button>
-    <button class="nav-button" onclick="nextRule()">下一张 ↓</button>
-</div>
+            
             
             <!-- Rule Paper Component -->
             <div class="rule-paper" id="current-rule">
     <div class="rule-title" id="current-rule-title">寝室规则</div>
     <div class="rule-item" id="current-rule-item">
     </div>
+    <div class="rule-navigation">
+    <button class="nav-button" onclick="prevRule()">上一张</button>
+    <button class="nav-button" onclick="nextRule()">下一张</button>
+</div>
 </div>
         </div>
         
@@ -481,10 +533,13 @@ button:hover {
             <div id="game-container">
                 <!-- Game Header Component -->
                 <div class="game-header">
-    <div class="time-display" id="time-display">22:00</div>
+    <div class="time-profession-container">
+        <div class="profession-display" id="profession-display">学生</div>
+        <div class="time-display" id="time-display">22:00</div>
+    </div>
     <div class="stats-container">
         <div class="stat-item">
-            <div>饱食度</div>
+            <div>饥饿</div>
             <div class="stat-value" id="hunger-value">80</div>
             <div class="progress-bar">
                 <div class="progress-fill hunger-fill" style="width: 80%;"></div>
@@ -498,7 +553,7 @@ button:hover {
             </div>
         </div>
         <div class="stat-item">
-            <div>理智值</div>
+            <div>理智</div>
             <div class="stat-value" id="sanity-value">60</div>
             <div class="progress-bar">
                 <div class="progress-fill sanity-fill" style="width: 60%;"></div>
@@ -568,6 +623,7 @@ button:hover {
 // Game state
 const gameState = {
     time: 22, // 22:00 (10 PM)
+    profession: "学生", // 人物职业
     hunger: 80,
     energy: 70,
     sanity: 60,
@@ -576,6 +632,9 @@ const gameState = {
     speed: 50,
     luck: 50
 };
+
+// 可选职业列表
+const professions = ["学生", "老人", "残疾人", "律师", "医生", "教师", "工人", "警察", "艺术家", "商人"];
 
 // Game passages data
 const passages = {
@@ -618,7 +677,7 @@ const passages = {
         ]
     },
     testRule: {
-        text: "你决定验证第一条规则：'晚上11点后不要照镜子'。现在是10:30，你拿起手电筒走向镜子。当你照镜子时，你发现镜子里的自己似乎在微笑，但你并没有笑。",
+        text: "你决定验证第一条规则：'晚上11点后不要照镜子1'。现在是10:30，你拿起手电筒走向镜子。当你照镜子时，你发现镜子里的自己似乎在微笑，但你并没有笑。",
         choices: [
             { text: "立即关灯", action: "turnOffLight", timeChange: 0.1, hungerChange: 0, energyChange: -10, sanityChange: -30, speedChange: 10 },
             { text: "仔细观察镜子里的自己", action: "observeMirror", timeChange: 0.5, hungerChange: 0, energyChange: -15, sanityChange: -40, luckChange: -15 }
@@ -741,7 +800,7 @@ const rulePapers = [
         title: "寝室规则一",
         found: true,
         rules: [
-            { id: 1, text: "晚上11点后不要照镜子", marked: "unknown" },
+            { id: 1, text: "晚上11点后不要照镜子1", marked: "unknown" },
             { id: 2, text: "不要在黑暗中数床铺数量", marked: "unknown" },
             { id: 3, text: "听到脚步声要立即蒙头睡觉", marked: "unknown" },
             { id: 4, text: "不要回应门外的呼唤声", marked: "unknown" },
@@ -893,7 +952,7 @@ function updateRuleDisplay() {
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="rule-text" style="color: ${ruleTextColor}">${rule.text}</span>
                         <button class="mark-button-inline" onclick="toggleRuleMark(${rule.id})" style="background-color: ${rule.marked === 'true' ? '#4CAF50' : rule.marked === 'false' ? '#f44336' : '#FF9800'}">
-                            ${rule.marked === 'true' ? '真' : rule.marked === 'false' ? '假' : '未知'}
+                            ${rule.marked === 'true' ? '真' : rule.marked === 'false' ? '假' : '?'}
                         </button>
                     </div>
                 </div>
@@ -963,6 +1022,22 @@ function updateTime() {
     const hours = Math.floor(gameState.time);
     const minutes = Math.floor((gameState.time - hours) * 60);
     timeDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
+// Update profession display function
+function updateProfession() {
+    const professionDisplay = document.getElementById('profession-display');
+    if (professionDisplay) {
+        professionDisplay.textContent = gameState.profession;
+    }
+}
+
+// Change profession function
+function changeProfession() {
+    const currentIndex = professions.indexOf(gameState.profession);
+    const nextIndex = (currentIndex + 1) % professions.length;
+    gameState.profession = professions[nextIndex];
+    updateProfession();
 }
 
 // Update stats display function
@@ -1046,15 +1121,25 @@ function goToPassage(passageId, timeChange = 0, hungerChange = 0, energyChange =
         
         // Update time and stats display
         updateTime();
+        updateProfession();
         updateStats();
     }
 }
 
 // Initialize game
 updateTime();
+updateProfession();
 updateStats();
 updateRuleDisplay();
 updateClearRuleDisplay();
+
+// Add click event for profession change
+document.addEventListener('DOMContentLoaded', function() {
+    const professionDisplay = document.getElementById('profession-display');
+    if (professionDisplay) {
+        professionDisplay.addEventListener('click', changeProfession);
+    }
+});
 </script>
 </body>
 </html>

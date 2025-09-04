@@ -11,9 +11,13 @@
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 8px 12px;
+    width: 42px;
+    height: 32px;
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-button:hover {
@@ -22,7 +26,8 @@
 
 @media (max-width: 480px) {
     .nav-button {
-        padding: 6px 10px;
+        width: 42px;
+        height: 32px;
         font-size: 12px;
     }
 }

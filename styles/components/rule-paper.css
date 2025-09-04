@@ -45,17 +45,31 @@
     color: #8b4513;
     border: none;
     border-radius: 3px;
-    padding: 4px 8px;
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
     text-align: center;
-    min-width: 40px;
-    height: 24px;
+    width: 42px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+}
+
+.mark-button-inline[data-marked="true"] {
+    background: #4CAF50;
+    color: white;
+}
+
+.mark-button-inline[data-marked="false"] {
+    background: #f44336;
+    color: white;
+}
+
+.mark-button-inline[data-marked="unknown"] {
+    background: #FF9800;
+    color: white;
 }
 
 .mark-button-inline:hover {

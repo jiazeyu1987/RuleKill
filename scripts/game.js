@@ -1,6 +1,7 @@
 // Game state
 const gameState = {
     time: 22, // 22:00 (10 PM)
+    profession: "学生", // 人物职业
     hunger: 80,
     energy: 70,
     sanity: 60,
@@ -9,6 +10,9 @@ const gameState = {
     speed: 50,
     luck: 50
 };
+
+// 可选职业列表
+const professions = ["学生", "老人", "残疾人", "律师", "医生", "教师", "工人", "警察", "艺术家", "商人"];
 
 // Game passages data
 const passages = {
@@ -325,7 +329,7 @@ function updateRuleDisplay() {
                 <div class="rule-item">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="rule-text" style="color: ${ruleTextColor}">${rule.text}</span>
-                        <button class="mark-button-inline" onclick="toggleRuleMark(${rule.id})" style="background-color: ${rule.marked === 'true' ? '#4CAF50' : rule.marked === 'false' ? '#f44336' : '#FF9800'}">
+                        <button class="mark-button-inline" onclick="toggleRuleMark(${rule.id})" data-marked="${rule.marked}">
                             ${rule.marked === 'true' ? '真' : rule.marked === 'false' ? '假' : '未知'}
                         </button>
                     </div>
@@ -396,6 +400,20 @@ function updateTime() {
     const hours = Math.floor(gameState.time);
     const minutes = Math.floor((gameState.time - hours) * 60);
     timeDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
+// Update profession display function
+function updateProfession() {
+    const professionDisplay = document.getElementById('profession-display');
+    professionDisplay.textContent = gameState.profession;
+}
+
+// Change profession function
+function changeProfession() {
+    const currentIndex = professions.indexOf(gameState.profession);
+    const nextIndex = (currentIndex + 1) % professions.length;
+    gameState.profession = professions[nextIndex];
+    updateProfession();
 }
 
 // Update stats display function
@@ -479,12 +497,22 @@ function goToPassage(passageId, timeChange = 0, hungerChange = 0, energyChange =
         
         // Update time and stats display
         updateTime();
+        updateProfession();
         updateStats();
     }
 }
 
 // Initialize game
 updateTime();
+updateProfession();
 updateStats();
 updateRuleDisplay();
 updateClearRuleDisplay();
+
+// Add click event for profession change
+document.addEventListener('DOMContentLoaded', function() {
+    const professionDisplay = document.getElementById('profession-display');
+    if (professionDisplay) {
+        professionDisplay.addEventListener('click', changeProfession);
+    }
+});

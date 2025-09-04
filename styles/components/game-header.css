@@ -8,6 +8,34 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.time-profession-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.profession-display {
+    background: rgba(102, 126, 234, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    min-width: 60px;
+    text-align: center;
+}
+
+.profession-display:hover {
+    background: rgba(102, 126, 234, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
 .time-display {
     text-align: center;
     font-size: 1.1em;
@@ -16,7 +44,7 @@
     background: rgba(0, 0, 0, 0.3);
     padding: 8px;
     border-radius: 8px;
-    margin-bottom: 12px;
+    min-width: 70px;
 }
 
 .stats-container {
@@ -101,6 +129,19 @@
         padding: 6px;
         min-width: 65px;
     }
+    .time-profession-container {
+        gap: 10px;
+    }
+    .profession-display {
+        padding: 6px 10px;
+        font-size: 0.9em;
+        min-width: 50px;
+    }
+    .time-display {
+        font-size: 1em;
+        padding: 6px;
+        min-width: 60px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -111,9 +152,19 @@
         padding: 5px;
         min-width: 55px;
     }
+    .time-profession-container {
+        gap: 8px;
+        flex-direction: column;
+    }
+    .profession-display {
+        padding: 5px 8px;
+        font-size: 0.85em;
+        min-width: 45px;
+    }
     .time-display {
         font-size: 1em;
         padding: 6px;
+        min-width: 55px;
     }
     .stat-value {
         font-size: 1em;
