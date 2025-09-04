@@ -27,7 +27,8 @@ const cssFiles = [
     'styles/components/rule-paper.css',
     'styles/components/game-header.css',
     'styles/components/passage.css',
-    'styles/components/choices.css'
+    'styles/components/choices.css',
+    'styles/components/clear-rules.css'
 ];
 
 let combinedCSS = '';

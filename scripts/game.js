@@ -217,8 +217,43 @@ const rulePapers = [
     }
 ];
 
+// 通关 rules data
+const clearRules = [
+    {
+        id: 1,
+        grade: "S",
+        title: "S级通关条件",
+        found: true,
+        rule: "完全理解所有规则的真正含义并在不违反任何规则的前提下生存到天亮"
+    },
+    {
+        id: 2,
+        grade: "A",
+        title: "A级通关条件",
+        found: true,
+        rule: "遵守所有已知规则并坚持到午夜，成功逃离寝室并找到安全区域"
+    },
+    {
+        id: 3,
+        grade: "B",
+        title: "B级通关条件",
+        found: true,
+        rule: "保持理智值不低于30并发现至少3个隐藏规则"
+    },
+    {
+        id: 4,
+        grade: "C",
+        title: "C级通关条件",
+        found: true,
+        rule: "简单遵守表面规则并在寝室中生存超过6小时"
+    }
+];
+
 // Current rule paper index
 let currentPaperIndex = 0;
+
+// Current clear rule index
+let currentClearRuleIndex = 0;
 
 // Mark rule function
 function markRule(ruleId, status) {
@@ -229,6 +264,24 @@ function markRule(ruleId, status) {
         updateRuleDisplay();
     }
 }
+
+// Toggle rule mark function
+function toggleRuleMark(ruleId) {
+    const paper = rulePapers[currentPaperIndex];
+    const rule = paper.rules.find(r => r.id === ruleId);
+    if (rule) {
+        // Cycle through states: unknown -> true -> false -> unknown
+        if (rule.marked === 'unknown') {
+            rule.marked = 'true';
+        } else if (rule.marked === 'true') {
+            rule.marked = 'false';
+        } else if (rule.marked === 'false') {
+            rule.marked = 'unknown';
+        }
+        updateRuleDisplay();
+    }
+}
+
 
 // Find rule paper function
 function findRulePaper(paperId) {
@@ -269,13 +322,13 @@ function updateRuleDisplay() {
             }
             
             ruleDiv.innerHTML = `
-                <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-                    <span class="rule-text" style="color: ${ruleTextColor}">${rule.text}</span>
-                </div>
-                <div class="rule-marking-inline">
-                    <button class="mark-button-inline" onclick="markRule(${rule.id}, 'true')" style="background-color: ${rule.marked === 'true' ? '#4CAF50' : '#d2b48c'}">真</button>
-                    <button class="mark-button-inline" onclick="markRule(${rule.id}, 'false')" style="background-color: ${rule.marked === 'false' ? '#f44336' : '#d2b48c'}">假</button>
-                    <button class="mark-button-inline" onclick="markRule(${rule.id}, 'unknown')" style="background-color: ${rule.marked === 'unknown' ? '#FF9800' : '#d2b48c'}">未知</button>
+                <div class="rule-item">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="rule-text" style="color: ${ruleTextColor}">${rule.text}</span>
+                        <button class="mark-button-inline" onclick="toggleRuleMark(${rule.id})" style="background-color: ${rule.marked === 'true' ? '#4CAF50' : rule.marked === 'false' ? '#f44336' : '#FF9800'}">
+                            ${rule.marked === 'true' ? '真' : rule.marked === 'false' ? '假' : '未知'}
+                        </button>
+                    </div>
                 </div>
             `;
             
@@ -290,6 +343,29 @@ function updateRuleDisplay() {
     }
 }
 
+// Update clear rule display function
+function updateClearRuleDisplay() {
+    document.getElementById('current-clear-rule-title').textContent = '通关条件';
+    
+    // Clear current clear rule display
+    const ruleItem = document.getElementById('current-clear-rule-item');
+    ruleItem.innerHTML = '';
+    
+    // Display all clear rules together
+    clearRules.forEach(paper => {
+        const ruleDiv = document.createElement('div');
+        ruleDiv.className = 'rule-item';
+        
+        ruleDiv.innerHTML = `
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                <span class="rule-text" style="color: black"><strong>${paper.title}:</strong> ${paper.rule}</span>
+            </div>
+        `;
+        
+        ruleItem.appendChild(ruleDiv);
+    });
+}
+
 // Previous rule function
 function prevRule() {
     currentPaperIndex = (currentPaperIndex - 1 + rulePapers.length) % rulePapers.length;
@@ -300,6 +376,18 @@ function prevRule() {
 function nextRule() {
     currentPaperIndex = (currentPaperIndex + 1) % rulePapers.length;
     updateRuleDisplay();
+}
+
+// Previous clear rule function
+function prevClearRule() {
+    currentClearRuleIndex = (currentClearRuleIndex - 1 + clearRules.length) % clearRules.length;
+    updateClearRuleDisplay();
+}
+
+// Next clear rule function
+function nextClearRule() {
+    currentClearRuleIndex = (currentClearRuleIndex + 1) % clearRules.length;
+    updateClearRuleDisplay();
 }
 
 // Update time display function
@@ -399,3 +487,4 @@ function goToPassage(passageId, timeChange = 0, hungerChange = 0, energyChange =
 updateTime();
 updateStats();
 updateRuleDisplay();
+updateClearRuleDisplay();

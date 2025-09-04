@@ -22,9 +22,23 @@ h1 {
     gap: 15px;
 }
 
+.rules-container {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .game-area {
     flex: 1;
     min-width: 0;
+}
+
+.clear-rules-container {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 #game-container {
@@ -37,13 +51,14 @@ h1 {
 @import url('components/game-header.css');
 @import url('components/passage.css');
 @import url('components/choices.css');
+@import url('components/clear-rules.css');
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
     }
-    .rules-container {
+    .rules-container, .clear-rules-container {
         width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
