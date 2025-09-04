@@ -1,11 +1,11 @@
 .game-header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(20, 10, 10, 0.9);
     border-radius: 12px;
     padding: 12px;
     margin-bottom: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(204, 51, 51, 0.3);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(204, 51, 51, 0.3);
 }
 
 .time-profession-container {
@@ -17,34 +17,35 @@
 }
 
 .profession-display {
-    background: rgba(102, 126, 234, 0.8);
-    color: white;
+    background: rgba(153, 51, 51, 0.8);
+    color: #ffcccc;
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 0.95em;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(204, 51, 51, 0.5);
     min-width: 60px;
     text-align: center;
 }
 
 .profession-display:hover {
-    background: rgba(102, 126, 234, 1);
+    background: rgba(204, 51, 51, 1);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(204, 51, 51, 0.6);
 }
 
 .time-display {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.3);
+    color: #cc6666;
+    background: rgba(0, 0, 0, 0.6);
     padding: 8px;
     border-radius: 8px;
     min-width: 70px;
+    border: 1px solid rgba(204, 51, 51, 0.3);
 }
 
 .stats-container {
@@ -57,27 +58,29 @@
 }
 
 .stat-item {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(30, 15, 15, 0.8);
     padding: 8px;
     border-radius: 8px;
     min-width: 60px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     flex: 1 1 auto;
     order: 0;
+    border: 1px solid rgba(204, 51, 51, 0.2);
 }
 
 .stat-value {
     font-size: 1.2em;
     font-weight: bold;
-    color: #667eea;
+    color: #cc9999;
 }
 
 .progress-bar {
     height: 8px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(20, 10, 10, 0.6);
     border-radius: 4px;
     overflow: hidden;
     margin: 5px 0;
+    border: 1px solid rgba(204, 51, 51, 0.2);
 }
 
 .progress-fill {
@@ -87,37 +90,37 @@
 }
 
 .hunger-fill { 
-    background: linear-gradient(90deg, #ff6b6b, #ee5a24); 
+    background: linear-gradient(90deg, #cc3333, #990000); 
     width: 80%; 
 }
 
 .energy-fill { 
-    background: linear-gradient(90deg, #4cd137, #44bd32); 
+    background: linear-gradient(90deg, #666633, #444411); 
     width: 70%; 
 }
 
 .sanity-fill { 
-    background: linear-gradient(90deg, #9c88ff, #8c7ae6); 
+    background: linear-gradient(90deg, #663366, #441144); 
     width: 60%; 
 }
 
 .intelligence-fill { 
-    background: linear-gradient(90deg, #3498db, #2980b9); 
+    background: linear-gradient(90deg, #336666, #224444); 
     width: 50%; 
 }
 
 .strength-fill { 
-    background: linear-gradient(90deg, #e74c3c, #c0392b); 
+    background: linear-gradient(90deg, #993333, #771111); 
     width: 50%; 
 }
 
 .speed-fill { 
-    background: linear-gradient(90deg, #f1c40f, #f39c12); 
+    background: linear-gradient(90deg, #996633, #774411); 
     width: 50%; 
 }
 
 .luck-fill { 
-    background: linear-gradient(90deg, #9b59b6, #8e44ad); 
+    background: linear-gradient(90deg, #663333, #441111); 
     width: 50%; 
 }
 

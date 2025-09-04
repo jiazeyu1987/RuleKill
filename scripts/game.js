@@ -318,11 +318,11 @@ function updateRuleDisplay() {
             ruleDiv.className = 'rule-item';
             
             // Set rule text color based on marking status
-            let ruleTextColor = 'black';
+            let ruleTextColor = '#dddddd'; // Changed from 'black' to light gray
             if (rule.marked === 'true') {
-                ruleTextColor = 'green';
+                ruleTextColor = '#88cc88'; // Light green
             } else if (rule.marked === 'false') {
-                ruleTextColor = 'red';
+                ruleTextColor = '#cc8888'; // Light red
             }
             
             ruleDiv.innerHTML = `
@@ -330,7 +330,7 @@ function updateRuleDisplay() {
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="rule-text" style="color: ${ruleTextColor}">${rule.text}</span>
                         <button class="mark-button-inline" onclick="toggleRuleMark(${rule.id})" data-marked="${rule.marked}">
-                            ${rule.marked === 'true' ? '真' : rule.marked === 'false' ? '假' : '未知'}
+                            ${rule.marked === 'true' ? '真' : rule.marked === 'false' ? '假' : '?'}
                         </button>
                     </div>
                 </div>
@@ -362,7 +362,7 @@ function updateClearRuleDisplay() {
         
         ruleDiv.innerHTML = `
             <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-                <span class="rule-text" style="color: black"><strong>${paper.title}:</strong> ${paper.rule}</span>
+                <span class="rule-text" style="color: #dddddd"><strong>${paper.title}:</strong> ${paper.rule}</span>
             </div>
         `;
         

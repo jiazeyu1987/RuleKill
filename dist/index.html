@@ -11,17 +11,19 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #2a0808 100%);
     line-height: 1.6;
-    color: #333;
+    color: #cccccc;
+    min-height: 100vh;
 }
 
 h1 {
-    color: white;
+    color: #cc3333;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 8px rgba(204, 51, 51, 0.8), 0 0 20px rgba(204, 51, 51, 0.4);
     margin-bottom: 15px;
     font-size: 2em;
+    font-weight: bold;
 }
 
 .main-container {
@@ -101,33 +103,42 @@ h1 {
 }
 
 .nav-button {
-    background: #8b4513;
-    color: white;
+    background: #4d2222;
+    color: #cc9999;
     border: none;
     border-radius: 5px;
-    padding: 8px 12px;
+    width: 140px;
+    height: 40px;
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(204, 51, 51, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
 .nav-button:hover {
-    background: #a0522d;
+    background: #6d3333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 480px) {
     .nav-button {
-        width: 42px;
-        height: 32px;
+        width: 120px;
+        height: 36px;
         font-size: 12px;
     }
 }
 
 .rule-paper {
-    background: #f5f5dc;
-    border: 1px solid #d2b48c;
+    background: #2d1f1a;
+    border: 1px solid #4a2b20;
     border-radius: 10px;
     padding: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(204, 51, 51, 0.1);
     position: relative;
 }
 
@@ -138,7 +149,7 @@ h1 {
     left: 0;
     right: 0;
     height: 30px;
-    background: linear-gradient(to bottom, #e6e2d3, transparent);
+    background: linear-gradient(to bottom, rgba(77, 34, 25, 0.6), transparent);
     border-radius: 10px 10px 0 0;
 }
 
@@ -146,16 +157,18 @@ h1 {
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    color: #8b4513;
+    color: #cc4444;
     position: relative;
     z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .rule-item {
     margin: 8px 0;
     padding: 8px;
-    border-bottom: 1px dashed #d2b48c;
+    border-bottom: 1px dashed #4a2b20;
     min-height: 40px;
+    color: #ccaa99;
 }
 
 .rule-text {
@@ -165,8 +178,8 @@ h1 {
 }
 
 .mark-button-inline {
-    background: #d2b48c;
-    color: white;
+    background: #4a2b20;
+    color: #cc9988;
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -179,10 +192,31 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    border: 1px solid #663322;
+}
+
+.mark-button-inline[data-marked="true"] {
+    background: #2d5a2d;
+    color: #88cc88;
+    border: 1px solid #4a7a4a;
+}
+
+.mark-button-inline[data-marked="false"] {
+    background: #6d2222;
+    color: #cc8888;
+    border: 1px solid #9a3333;
+}
+
+.mark-button-inline[data-marked="unknown"] {
+    background: #6d4422;
+    color: #cc9955;
+    border: 1px solid #996633;
 }
 
 .mark-button-inline:hover {
-    background: #e6d2b5;
+    background: #5a3b30;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 480px) {
@@ -196,13 +230,13 @@ h1 {
 }
 
 .game-header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(20, 10, 10, 0.9);
     border-radius: 12px;
     padding: 12px;
     margin-bottom: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(204, 51, 51, 0.3);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(204, 51, 51, 0.3);
 }
 
 .time-profession-container {
@@ -214,34 +248,35 @@ h1 {
 }
 
 .profession-display {
-    background: rgba(102, 126, 234, 0.8);
-    color: white;
+    background: rgba(153, 51, 51, 0.8);
+    color: #ffcccc;
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 0.95em;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(204, 51, 51, 0.5);
     min-width: 60px;
     text-align: center;
 }
 
 .profession-display:hover {
-    background: rgba(102, 126, 234, 1);
+    background: rgba(204, 51, 51, 1);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(204, 51, 51, 0.6);
 }
 
 .time-display {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.3);
+    color: #cc6666;
+    background: rgba(0, 0, 0, 0.6);
     padding: 8px;
     border-radius: 8px;
     min-width: 70px;
+    border: 1px solid rgba(204, 51, 51, 0.3);
 }
 
 .stats-container {
@@ -254,27 +289,29 @@ h1 {
 }
 
 .stat-item {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(30, 15, 15, 0.8);
     padding: 8px;
     border-radius: 8px;
     min-width: 60px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     flex: 1 1 auto;
     order: 0;
+    border: 1px solid rgba(204, 51, 51, 0.2);
 }
 
 .stat-value {
     font-size: 1.2em;
     font-weight: bold;
-    color: #667eea;
+    color: #cc9999;
 }
 
 .progress-bar {
     height: 8px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(20, 10, 10, 0.6);
     border-radius: 4px;
     overflow: hidden;
     margin: 5px 0;
+    border: 1px solid rgba(204, 51, 51, 0.2);
 }
 
 .progress-fill {
@@ -284,37 +321,37 @@ h1 {
 }
 
 .hunger-fill { 
-    background: linear-gradient(90deg, #ff6b6b, #ee5a24); 
+    background: linear-gradient(90deg, #cc3333, #990000); 
     width: 80%; 
 }
 
 .energy-fill { 
-    background: linear-gradient(90deg, #4cd137, #44bd32); 
+    background: linear-gradient(90deg, #666633, #444411); 
     width: 70%; 
 }
 
 .sanity-fill { 
-    background: linear-gradient(90deg, #9c88ff, #8c7ae6); 
+    background: linear-gradient(90deg, #663366, #441144); 
     width: 60%; 
 }
 
 .intelligence-fill { 
-    background: linear-gradient(90deg, #3498db, #2980b9); 
+    background: linear-gradient(90deg, #336666, #224444); 
     width: 50%; 
 }
 
 .strength-fill { 
-    background: linear-gradient(90deg, #e74c3c, #c0392b); 
+    background: linear-gradient(90deg, #993333, #771111); 
     width: 50%; 
 }
 
 .speed-fill { 
-    background: linear-gradient(90deg, #f1c40f, #f39c12); 
+    background: linear-gradient(90deg, #996633, #774411); 
     width: 50%; 
 }
 
 .luck-fill { 
-    background: linear-gradient(90deg, #9b59b6, #8e44ad); 
+    background: linear-gradient(90deg, #663333, #441111); 
     width: 50%; 
 }
 
@@ -369,13 +406,13 @@ h1 {
 }
 
 .passage {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(25, 15, 15, 0.9);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(204, 51, 51, 0.1);
     margin-bottom: 15px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(204, 51, 51, 0.3);
     min-height: 150px;
     display: flex;
     flex-direction: column;
@@ -386,6 +423,8 @@ h1 {
     font-size: 1.1em;
     line-height: 1.7;
     margin-bottom: 20px;
+    color: #ccbbbb;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 480px) {
@@ -396,20 +435,21 @@ h1 {
 }
 
 .choices {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(25, 15, 15, 0.9);
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(204, 51, 51, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(204, 51, 51, 0.3);
 }
 
 .choice-title {
     font-weight: bold;
     margin-bottom: 15px;
-    color: #667eea;
+    color: #cc6666;
     text-align: center;
     font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 button {
@@ -417,21 +457,24 @@ button {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
+    background: linear-gradient(45deg, #4d1a1a, #661111);
+    color: #ccbbbb;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(204, 51, 51, 0.2);
+    border: 1px solid rgba(204, 51, 51, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #764ba2, #667eea);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(204, 51, 51, 0.4);
+    background: linear-gradient(45deg, #661111, #4d1a1a);
+    color: #ddcccc;
 }
 
 @media (max-width: 480px) {
@@ -453,11 +496,11 @@ button:hover {
 }
 
 .clear-rule-paper {
-    background: #e6f7ff;
-    border: 1px solid #91d5ff;
+    background: #1a1515;
+    border: 1px solid #4d2222;
     border-radius: 10px;
     padding: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(204, 51, 51, 0.1);
     position: relative;
 }
 
@@ -468,7 +511,7 @@ button:hover {
     left: 0;
     right: 0;
     height: 30px;
-    background: linear-gradient(to bottom, #d9f7be, transparent);
+    background: linear-gradient(to bottom, rgba(77, 34, 34, 0.6), transparent);
     border-radius: 10px 10px 0 0;
 }
 
@@ -476,23 +519,26 @@ button:hover {
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    color: #1890ff;
+    color: #cc4444;
     position: relative;
     z-index: 1;
     font-size: 18px;
     padding: 8px;
-    background: rgba(24, 144, 255, 0.1);
+    background: rgba(77, 34, 34, 0.3);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(204, 51, 51, 0.3);
 }
 
 .clear-rule-item {
     margin: 8px 0;
     padding: 8px;
-    border-bottom: 1px dashed #91d5ff;
+    border-bottom: 1px dashed #4d2222;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    color: #cc9999;
 }
 
 @media (max-width: 480px) {
@@ -513,18 +559,17 @@ button:hover {
     <div class="main-container">
         <!-- Rules Panel Component -->
         <div class="rules-container">
-            <!-- Rule Navigation Component -->
-            
-            
             <!-- Rule Paper Component -->
             <div class="rule-paper" id="current-rule">
     <div class="rule-title" id="current-rule-title">寝室规则</div>
     <div class="rule-item" id="current-rule-item">
     </div>
-    <div class="rule-navigation">
-    <button class="nav-button" onclick="prevRule()">上一张</button>
-    <button class="nav-button" onclick="nextRule()">下一张</button>
 </div>
+            
+            <!-- Rule Navigation Component -->
+            <div class="rule-navigation">
+    <button class="nav-button" onclick="prevRule()">↑ 上一张</button>
+    <button class="nav-button" onclick="nextRule()">下一张 ↓</button>
 </div>
         </div>
         
@@ -539,7 +584,7 @@ button:hover {
     </div>
     <div class="stats-container">
         <div class="stat-item">
-            <div>饥饿</div>
+            <div>饱食度</div>
             <div class="stat-value" id="hunger-value">80</div>
             <div class="progress-bar">
                 <div class="progress-fill hunger-fill" style="width: 80%;"></div>
@@ -553,7 +598,7 @@ button:hover {
             </div>
         </div>
         <div class="stat-item">
-            <div>理智</div>
+            <div>理智值</div>
             <div class="stat-value" id="sanity-value">60</div>
             <div class="progress-bar">
                 <div class="progress-fill sanity-fill" style="width: 60%;"></div>
@@ -677,7 +722,7 @@ const passages = {
         ]
     },
     testRule: {
-        text: "你决定验证第一条规则：'晚上11点后不要照镜子1'。现在是10:30，你拿起手电筒走向镜子。当你照镜子时，你发现镜子里的自己似乎在微笑，但你并没有笑。",
+        text: "你决定验证第一条规则：'晚上11点后不要照镜子'。现在是10:30，你拿起手电筒走向镜子。当你照镜子时，你发现镜子里的自己似乎在微笑，但你并没有笑。",
         choices: [
             { text: "立即关灯", action: "turnOffLight", timeChange: 0.1, hungerChange: 0, energyChange: -10, sanityChange: -30, speedChange: 10 },
             { text: "仔细观察镜子里的自己", action: "observeMirror", timeChange: 0.5, hungerChange: 0, energyChange: -15, sanityChange: -40, luckChange: -15 }
@@ -800,7 +845,7 @@ const rulePapers = [
         title: "寝室规则一",
         found: true,
         rules: [
-            { id: 1, text: "晚上11点后不要照镜子1", marked: "unknown" },
+            { id: 1, text: "晚上11点后不要照镜子", marked: "unknown" },
             { id: 2, text: "不要在黑暗中数床铺数量", marked: "unknown" },
             { id: 3, text: "听到脚步声要立即蒙头睡觉", marked: "unknown" },
             { id: 4, text: "不要回应门外的呼唤声", marked: "unknown" },
@@ -940,18 +985,18 @@ function updateRuleDisplay() {
             ruleDiv.className = 'rule-item';
             
             // Set rule text color based on marking status
-            let ruleTextColor = 'black';
+            let ruleTextColor = '#dddddd'; // Changed from 'black' to light gray
             if (rule.marked === 'true') {
-                ruleTextColor = 'green';
+                ruleTextColor = '#88cc88'; // Light green
             } else if (rule.marked === 'false') {
-                ruleTextColor = 'red';
+                ruleTextColor = '#cc8888'; // Light red
             }
             
             ruleDiv.innerHTML = `
                 <div class="rule-item">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="rule-text" style="color: ${ruleTextColor}">${rule.text}</span>
-                        <button class="mark-button-inline" onclick="toggleRuleMark(${rule.id})" style="background-color: ${rule.marked === 'true' ? '#4CAF50' : rule.marked === 'false' ? '#f44336' : '#FF9800'}">
+                        <button class="mark-button-inline" onclick="toggleRuleMark(${rule.id})" data-marked="${rule.marked}">
                             ${rule.marked === 'true' ? '真' : rule.marked === 'false' ? '假' : '?'}
                         </button>
                     </div>
@@ -984,7 +1029,7 @@ function updateClearRuleDisplay() {
         
         ruleDiv.innerHTML = `
             <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-                <span class="rule-text" style="color: black"><strong>${paper.title}:</strong> ${paper.rule}</span>
+                <span class="rule-text" style="color: #dddddd"><strong>${paper.title}:</strong> ${paper.rule}</span>
             </div>
         `;
         
@@ -1027,9 +1072,7 @@ function updateTime() {
 // Update profession display function
 function updateProfession() {
     const professionDisplay = document.getElementById('profession-display');
-    if (professionDisplay) {
-        professionDisplay.textContent = gameState.profession;
-    }
+    professionDisplay.textContent = gameState.profession;
 }
 
 // Change profession function
